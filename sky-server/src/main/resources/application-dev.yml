@@ -11,3 +11,9 @@ sky:
     access-key-id: LTAI5t8ibFSDgJbVmi1Rvmpp
     access-key-secret: ROFvInYGB2OxI7QXKf0O48Idh2F8yO
     bucket-name: studytest20230806
+  redis:
+    host: localhost
+    port: 6379
+    password: 123456
+    database: 10
+    timeout: 10000
