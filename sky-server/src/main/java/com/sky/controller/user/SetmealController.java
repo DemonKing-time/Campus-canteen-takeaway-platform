@@ -3,6 +3,7 @@ package com.sky.controller.user;
 import com.sky.constant.StatusConstant;
 import com.sky.entity.Setmeal;
 import com.sky.result.Result;
+import com.sky.service.SetmealService;
 import com.sky.vo.DishItemVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -17,8 +18,8 @@ import java.util.List;
 @RequestMapping("/user/setmeal")
 @Api(tags = "C端-套餐浏览接口")
 public class SetmealController {
-    //@Autowired
-    //private SetmealService setmealService;
+    @Autowired
+    private SetmealService setmealService;
 
     /**
      * 条件查询
@@ -26,7 +27,7 @@ public class SetmealController {
      * @param categoryId
      * @return
      */
-    /*@GetMapping("/list")
+    @GetMapping("/list")
     @ApiOperation("根据分类id查询套餐")
     public Result<List<Setmeal>> list(Long categoryId) {
         Setmeal setmeal = new Setmeal();
@@ -35,7 +36,7 @@ public class SetmealController {
 
         List<Setmeal> list = setmealService.list(setmeal);
         return Result.success(list);
-    }*/
+    }
 
     /**
      * 根据套餐id查询包含的菜品列表
@@ -43,10 +44,10 @@ public class SetmealController {
      * @param id
      * @return
      */
-    /*@GetMapping("/dish/{id}")
+    @GetMapping("/dish/{id}")
     @ApiOperation("根据套餐id查询包含的菜品列表")
     public Result<List<DishItemVO>> dishList(@PathVariable("id") Long id) {
         List<DishItemVO> list = setmealService.getDishItemById(id);
         return Result.success(list);
-    }*/
+    }
 }
