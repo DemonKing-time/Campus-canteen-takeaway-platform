@@ -22,6 +22,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -125,7 +126,6 @@ public class DishServiceImpl implements DishService {
      * 根据id修改菜品的基本信息和口味信息
      * @param dishDTO
      */
-    @Override
     public void updateWithFlavor(DishDTO dishDTO) {
         Dish dish=new Dish();
         BeanUtils.copyProperties(dishDTO,dish);
@@ -142,5 +142,17 @@ public class DishServiceImpl implements DishService {
             //向口味表插入多条数据
             dishFlavorMapper.insertBatch(flavors);
         }
+    }
+    /**
+     * 根据分类id查询菜品
+     * @param categoryId
+     * @return
+     */
+    public List<Dish> list(Long categoryId) {
+        Dish dish = Dish.builder()
+                .categoryId(categoryId)
+                .status(StatusConstant.ENABLE)
+                .build();
+        return dishMapper.list(dish);
     }
 }
