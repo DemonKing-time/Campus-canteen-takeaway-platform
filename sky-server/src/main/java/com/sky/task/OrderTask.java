@@ -24,8 +24,8 @@ public class OrderTask {
     /**
      * 处理超时订单
      */
-    //@Scheduled(cron = "0 * * * * ? ")//每分钟触发一次
-    @Scheduled(cron = "1/5 * * * * ? ")
+    @Scheduled(cron = "0 * * * * ? ")//每分钟触发一次
+    //@Scheduled(cron = "1/5 * * * * ? ")
     public void processTimeoutOrder(){
         //当前时间减去15分钟
         LocalDateTime time = LocalDateTime.now().plusMinutes(-15);
@@ -44,8 +44,8 @@ public class OrderTask {
     /**
      * 处理一直在派送中的订单
      */
-    //@Scheduled(cron = "0 0 1 * * ?")//每天凌晨一点触发一次
-    @Scheduled(cron = "0/5 * * * * ? ")
+    @Scheduled(cron = "0 0 1 * * ?")//每天凌晨一点触发一次
+    //@Scheduled(cron = "0/5 * * * * ? ")
     public void processDeliveryOrder(){
         //上一个工作日
         LocalDateTime time = LocalDateTime.now().plusMinutes(-60);
