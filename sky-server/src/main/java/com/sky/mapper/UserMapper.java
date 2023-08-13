@@ -3,6 +3,9 @@ package com.sky.mapper;
 import com.sky.entity.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.springframework.web.servlet.view.InternalResourceViewResolver;
+
+import java.util.Map;
 
 /**
  * @author zc
@@ -18,4 +21,6 @@ public interface UserMapper {
 
     @Select("select * from user where id=#{id}")
     User getById(Long userId);
+    //动态条件统计用户数量
+    Integer countByMap(Map map);
 }
